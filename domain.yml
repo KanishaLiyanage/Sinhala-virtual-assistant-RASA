@@ -1,0 +1,76 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_balance
+  - ask_loyalty
+  - ask_usage
+  - ask_payment_history
+  - ask_package
+  - ask_package_upgrade
+  - name_entry
+  - package_entry
+
+actions:
+  - action_get_balance
+  - action_get_package
+  - action_get_loyalty
+  - action_get_usage
+  - action_get_payment_history
+  - action_package_slots
+
+forms:
+  package_upgrade_form:
+    required_slots:
+      - name
+      - package
+
+entities:
+  - name
+  - package
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: name
+        conditions:
+        - active_loop: package_upgrade_form
+
+  package:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: package
+        conditions:
+        - active_loop: package_upgrade_form
+
+responses:
+  utter_greet_and_help:
+  - text: "හායි! මම ඔබගේ Virtual Assistant. මම ඔබට උදව් කරන්නේ කෙසේ ද?"
+
+  utter_ask_name:
+  - text: "ඔබගේ නම කුමක්ද?"
+  - text: "කරුණාකර ඔබගේ නම ලබා දෙන්න"
+
+  utter_ask_package:
+  - text: "ඔබ upgrade කිරීමට යන පැකේජය කුමක්ද?"
+  - text: "කරුණාකර ඔබේ පැකේජය ඇතුළු කරන්න"
+  - text: "ඔබ upgrade කිරීමට කැමති පැකේජය කුමක්ද?"
+
+  utter_submit:
+  - text: "ඔබගේ පැකේජය upgrade කරන ලදී"
+
+  utter_goodbye:
+  - text: "බායි බායි"
+  - text: "බායි"
+  - text: "පසුව හමුවෙමු"
+  - text: "ආයෙත් හමුවෙමු"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

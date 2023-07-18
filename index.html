@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhala Virtual Assistant</title>
+</head>
+
+<body>
+    <script>!(function () {
+            let e = document.createElement("script"),
+                t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+                "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
+                (e.async = !0),
+                (e.onload = () => {
+                    window.WebChat.default(
+                        {
+                            initPayload: '/greet',
+                            customData: { language: "en" },
+                            socketUrl: "http://localhost:5005",
+                            title: 'Sinhala Virtual Assistant',
+                            subtitle: 'Ask me everything about connection',
+                        },
+                        null
+                    );
+
+                }),
+                t.insertBefore(e, t.firstChild);
+        })();
+    </script>
+
+    <style>
+        .rw-conversation-container .rw-header {
+            background-color: #006494;
+        }
+
+        .rw-conversation-container .rw-messages-container .rw-message .rw-response {
+            background-color: #f1f2f6;
+        }
+
+        .rw-conversation-container .rw-messages-container .rw-message .rw-client {
+            background-color: #0582ca;
+        }
+
+        .rw-launcher {
+            background-color: #006494;
+        }
+    </style>
+
+</body>
+
+</html>
