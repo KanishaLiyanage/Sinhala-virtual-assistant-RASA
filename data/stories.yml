@@ -10,6 +10,11 @@ stories:
 - story: Ask balance path
   steps:
   - intent: ask_balance
+  - action: utter_ask_name
+  - intent: name_entry
+    entities:
+    - name: "kanisha"
+    - name: "කානිෂ"
   - action: action_get_balance
 
 - story: Ask loyalty points path
